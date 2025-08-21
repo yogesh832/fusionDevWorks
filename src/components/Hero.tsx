@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "./ui/enhanced-button";
+import Scene3D from "./Scene3D";
 
 const Hero = () => {
   const scrollToSection = (sectionId: string) => {
@@ -23,6 +24,11 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background">
+      {/* 3D Earth Animation */}
+      <div className="absolute right-0 top-0 w-1/2 h-full opacity-20">
+        <Scene3D />
+      </div>
+      
       <div className="container mx-auto px-6 text-center relative z-10 max-w-4xl">
         <motion.div
           variants={staggerChildren}
