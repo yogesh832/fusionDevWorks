@@ -8,56 +8,47 @@ All colors MUST be HSL. Neon accents with professional dark aesthetic.
 
 @layer base {
   :root {
-    /* Dark theme base colors */
-    --background: 222 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Pure black background theme */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
 
-    --card: 222 84% 7%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 2%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 222 84% 7%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 2%;
+    --popover-foreground: 0 0% 100%;
 
-    /* Neon blue primary */
-    --primary: 191 100% 50%;
-    --primary-foreground: 222 84% 4.9%;
+    /* Clean white primary */
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
 
-    /* Purple secondary */
-    --secondary: 261 83% 58%;
-    --secondary-foreground: 210 40% 98%;
+    /* Subtle gray secondary */
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 100%;
 
     /* Muted grays */
-    --muted: 217 32% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 60%;
 
-    /* Teal accent */
-    --accent: 173 81% 40%;
-    --accent-foreground: 210 40% 98%;
+    /* Minimal accent */
+    --accent: 0 0% 20%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217 32% 17%;
-    --input: 217 32% 17%;
-    --ring: 191 100% 50%;
+    --border: 0 0% 10%;
+    --input: 0 0% 5%;
+    --ring: 0 0% 100%;
 
-    /* Neon glow colors */
-    --neon-blue: 191 100% 50%;
-    --neon-purple: 261 83% 58%;
-    --neon-teal: 173 81% 40%;
-    --neon-cyan: 181 100% 71%;
+    /* Clean gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(0 0% 100%), hsl(0 0% 90%));
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 2%), hsl(0 0% 0%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 2%), hsl(0 0% 5%));
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(191 100% 50% / 0.8), hsl(261 83% 58% / 0.8));
-    --gradient-glow: linear-gradient(180deg, hsl(191 100% 50% / 0.1), transparent);
-    --gradient-card: linear-gradient(145deg, hsl(222 84% 7%), hsl(217 32% 17%));
-
-    /* Shadows and glows */
-    --shadow-neon: 0 0 20px hsl(191 100% 50% / 0.3);
-    --shadow-neon-strong: 0 0 40px hsl(191 100% 50% / 0.5);
-    --shadow-purple: 0 0 20px hsl(261 83% 58% / 0.3);
-    --shadow-teal: 0 0 20px hsl(173 81% 40% / 0.3);
-    --shadow-card: 0 10px 30px hsl(0 0% 0% / 0.3);
+    /* Minimal shadows */
+    --shadow-subtle: 0 4px 20px hsl(0 0% 0% / 0.5);
+    --shadow-card: 0 8px 30px hsl(0 0% 0% / 0.3);
 
     /* Animation timings */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -133,58 +124,25 @@ All colors MUST be HSL. Neon accents with professional dark aesthetic.
 }
 
 @layer components {
-  /* Neon glow effects */
-  .glow-blue {
-    box-shadow: var(--shadow-neon);
-  }
-  
-  .glow-blue-strong {
-    box-shadow: var(--shadow-neon-strong);
-  }
-  
-  .glow-purple {
-    box-shadow: var(--shadow-purple);
-  }
-  
-  .glow-teal {
-    box-shadow: var(--shadow-teal);
-  }
-
-  /* Gradient backgrounds */
+  /* Minimal backgrounds */
   .bg-gradient-primary {
     background: var(--gradient-primary);
   }
   
-  .bg-gradient-glow {
-    background: var(--gradient-glow);
+  .bg-gradient-subtle {
+    background: var(--gradient-subtle);
   }
   
   .bg-gradient-card {
     background: var(--gradient-card);
   }
 
-  /* Text gradients */
-  .text-gradient-primary {
-    background: linear-gradient(135deg, hsl(var(--neon-blue)), hsl(var(--neon-purple)));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
-  .text-gradient-teal {
-    background: linear-gradient(135deg, hsl(var(--neon-teal)), hsl(var(--neon-cyan)));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  /* Hover animations */
-  .hover-glow {
+  /* Subtle hover animations */
+  .hover-lift {
     transition: var(--transition-smooth);
   }
   
-  .hover-glow:hover {
-    box-shadow: var(--shadow-neon-strong);
+  .hover-lift:hover {
     transform: translateY(-2px);
   }
   
@@ -193,7 +151,7 @@ All colors MUST be HSL. Neon accents with professional dark aesthetic.
   }
   
   .hover-scale:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
 
   /* Hero text reveal */
@@ -211,7 +169,7 @@ All colors MUST be HSL. Neon accents with professional dark aesthetic.
   }
   
   .fusion-card:hover {
-    border-color: hsl(var(--neon-blue) / 0.5);
-    box-shadow: var(--shadow-neon);
+    border-color: hsl(var(--primary) / 0.2);
+    box-shadow: var(--shadow-subtle);
   }
 }

@@ -113,7 +113,7 @@ const Testimonials = () => {
           {/* Navigation buttons */}
           <div className="flex justify-center items-center mt-8 space-x-4">
             <Button 
-              variant="neon-outline" 
+              variant="minimal-outline" 
               size="icon"
               onClick={prevTestimonial}
               className="rounded-full"
@@ -128,7 +128,7 @@ const Testimonials = () => {
                   key={index}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === currentIndex 
-                      ? 'bg-primary glow-blue' 
+                      ? 'bg-primary' 
                       : 'bg-muted-foreground/30'
                   }`}
                   onClick={() => setCurrentIndex(index)}
@@ -137,7 +137,7 @@ const Testimonials = () => {
             </div>
             
             <Button 
-              variant="neon-outline" 
+              variant="minimal-outline" 
               size="icon"
               onClick={nextTestimonial}
               className="rounded-full"
@@ -148,7 +148,7 @@ const Testimonials = () => {
         </div>
 
         <div className="text-center mt-16" data-aos="fade-up">
-          <Button variant="neon" size="lg">
+          <Button variant="minimal" size="lg">
             Start Your Success Story
           </Button>
         </div>

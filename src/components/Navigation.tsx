@@ -64,7 +64,7 @@ const Navigation = () => {
               Testimonials
             </button>
             <Button 
-              variant="neon-outline"
+              variant="minimal-outline"
               onClick={() => scrollToSection("contact")}
             >
               Get Started

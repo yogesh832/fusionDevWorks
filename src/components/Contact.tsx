@@ -140,7 +140,7 @@ const Contact = () => {
                 
                 <Button 
                   type="submit"
-                  variant="neon"
+                  variant="minimal"
                   size="lg"
                   className="w-full"
                 >
@@ -187,7 +187,7 @@ const Contact = () => {
               <p className="text-muted-foreground mb-6">
                 Book a free consultation call to discuss your project
               </p>
-              <Button variant="neon-outline" size="lg" className="w-full">
+              <Button variant="minimal-outline" size="lg" className="w-full">
                 Schedule Call
               </Button>
             </div>

@@ -82,7 +82,7 @@ const Portfolio = () => {
             {categories.map((category) => (
               <Button
                 key={category.key}
-                variant={filter === category.key ? "neon" : "neon-outline"}
+                variant={filter === category.key ? "minimal" : "minimal-outline"}
                 onClick={() => setFilter(category.key)}
                 data-aos="fade-up"
                 data-aos-delay={100}
@@ -107,8 +107,8 @@ const Portfolio = () => {
                   alt={project.title}
                   className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-center justify-center">
-                  <Button variant="neon-outline">
+                <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <Button variant="minimal-outline">
                     View Project
                   </Button>
                 </div>
@@ -138,7 +138,7 @@ const Portfolio = () => {
         </div>
 
         <div className="text-center mt-16" data-aos="fade-up">
-          <Button variant="neon" size="lg">
+          <Button variant="minimal" size="lg">
             View All Projects
           </Button>
         </div>

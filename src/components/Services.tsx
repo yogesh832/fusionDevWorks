@@ -76,7 +76,7 @@ const Services = () => {
                 </ul>
 
                 <Button 
-                  variant="neon-outline" 
+                  variant="minimal-outline" 
                   size="sm" 
                   className="w-full mt-6"
                 >
@@ -88,7 +88,7 @@ const Services = () => {
         </div>
 
         <div className="text-center mt-16" data-aos="fade-up">
-          <Button variant="neon" size="lg">
+          <Button variant="minimal" size="lg">
             Get Custom Quote
           </Button>
         </div>
