@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/enhanced-button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import axios from "axios";
+import { getCalApi } from "@calcom/embed-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,18 @@ const Contact = () => {
   });
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
+
+
+    useEffect(() => {
+    (async function () {
+      const cal = await getCalApi();
+      cal("ui", {
+        theme: "dark", // or "light"
+        styles: { branding: { brandColor: "#4F46E5" } },
+      });
+    })();
+  }, []);
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -180,9 +193,16 @@ const Contact = () => {
               <p className="text-muted-foreground mb-6">
                 Book a free consultation call to discuss your project
               </p>
-              <Button variant="minimal-outline" size="lg" className="w-full">
-                Schedule Call
-              </Button>
+               <Button
+      variant="minimal-outline"
+      size="lg"
+      className="w-full"
+      data-cal-namespace=""
+      data-cal-link="yogesh832"
+      data-cal-config='{"layout":"month_view"}'
+    >
+      Schedule Call
+    </Button>
             </div>
           </div>
         </div>

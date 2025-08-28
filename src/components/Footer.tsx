@@ -68,7 +68,7 @@ const Footer = () => {
             <div className="space-y-2 mb-4">
               <p className="text-muted-foreground">worksfusiondev@gmail.com</p>
               <p className="text-muted-foreground">+91 9211753859, +91 9259756979</p>
-              <p className="text-muted-foreground">San Francisco, CA</p>
+              <p className="text-muted-foreground">Bageshwar, Uttrakhand</p>
             </div>
             
             {/* Social Links */}

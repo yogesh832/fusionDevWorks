@@ -64,13 +64,16 @@ const Hero = () => {
             >
               View Our Work
             </Button>
-            <Button 
-              variant="minimal-outline"
-              size="xl"
-              onClick={() => scrollToSection("contact")}
-            >
-              Book a 15 Min Call
-            </Button>
+                      <Button
+      variant="minimal-outline"
+      size="lg"
+      className=""
+      data-cal-namespace=""
+      data-cal-link="yogesh832"
+      data-cal-config='{"layout":"month_view"}'
+    >
+      Book a Call 
+    </Button>
           </motion.div>
         </motion.div>
 

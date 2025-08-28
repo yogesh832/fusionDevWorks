@@ -130,11 +130,11 @@ const Portfolio = () => {
                       <Button variant="minimal-outline">Live</Button>
                     </a>
                   )}
-                  {project.github && (
+                  {/* {project.github && (
                     <a href={project.github} target="_blank" rel="noreferrer">
                       <Button variant="minimal-outline">Code</Button>
-                    </a>
-                  )}
+                    </a> */}
+                  {/* )} */}
                 </div>
               </div>
 
