@@ -2,57 +2,72 @@ import { useState } from "react";
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/enhanced-button";
 
+// ✅ Import all your screenshots from local folder
+import Rocksbox from "../../public/lovable-uploads/rocksbox.png";
+// import GoldDesign from "../../public/lovable-uploads/gold.png";
+import Lohamandi from "../../public/lovable-uploads/lohamandi.png";
+import DumpsXpert from "../../public/lovable-uploads/dumpsxpert.png";
+import CarRental from "../../public/lovable-uploads/car-rental.png";
+import BuildYourBuzz from "../../public/lovable-uploads/build-your-buzz.png";
+import Cloths4U from "../../public/lovable-uploads/cloths4u.png";
+
 const Portfolio = () => {
   const [filter, setFilter] = useState("all");
 
   const projects = [
     {
-      title: "E-Commerce Platform",
+      title: "Rocksbox",
       category: "web",
-      description: "Modern e-commerce solution with real-time inventory and payment processing",
-      tech: ["React", "Node.js", "MongoDB", "Stripe"],
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop",
-      link: "#"
+      description: "A jewelry subscription website design inspired by Rocksbox.",
+      tech: ["Next.js", "Tailwind", "Vercel"],
+      image: Rocksbox,
+      live: "https://www.rocksbox.com/",
+      github: "https://github.com/yogesh832"
     },
     {
-      title: "Fitness Mobile App",
-      category: "mobile",
-      description: "Cross-platform fitness tracking app with social features",
-      tech: ["React Native", "Firebase", "Redux", "Maps API"],
-      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=300&fit=crop",
-      link: "#"
-    },
-    {
-      title: "Analytics Dashboard",
+      title: "Lohamandi",
       category: "web",
-      description: "Real-time data visualization dashboard for business intelligence",
-      tech: ["Vue.js", "D3.js", "Python", "PostgreSQL"],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop",
-      link: "#"
+      description: "A steel trading platform with product catalog & order features.",
+      tech: ["Next.js", "Tailwind", "MongoDB"],
+      image: Lohamandi,
+      live: "https://lohamandi.com/",
+      github: "https://github.com/yogesh832/lohamandi"
     },
     {
-      title: "Food Delivery App",
-      category: "mobile",
-      description: "On-demand food delivery platform with live tracking",
-      tech: ["Flutter", "Dart", "Google Maps", "Firebase"],
-      image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop",
-      link: "#"
-    },
-    {
-      title: "SaaS Management Tool",
+      title: "DumpsXpert",
       category: "web",
-      description: "Enterprise project management platform with team collaboration",
-      tech: ["React", "TypeScript", "GraphQL", "AWS"],
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop",
-      link: "#"
+      description: "Exam dumps and preparation material marketplace.",
+      tech: ["Next.js", "Express", "MongoDB"],
+      image: DumpsXpert,
+      live: "https://dumpsxpert-next.vercel.app/",
+      github: "https://github.com/yogesh832/DumpsExpert-Next"
     },
     {
-      title: "AR Shopping App",
-      category: "mobile",
-      description: "Augmented reality shopping experience for home decoration",
-      tech: ["React Native", "ARCore", "ARKit", "TensorFlow"],
-      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500&h=300&fit=crop",
-      link: "#"
+      title: "Car Rental Website",
+      category: "web",
+      description: "Car rental booking platform with responsive UI.",
+      tech: ["React", "Tailwind", "Vercel"],
+      image: CarRental,
+      live: "https://car-rental-website-beige-five.vercel.app/",
+      github: "https://github.com/yogesh832/car-rental-website"
+    },
+    {
+      title: "Build Your Buzz",
+      category: "web",
+      description: "Digital marketing landing page for brand growth.",
+      tech: ["Next.js", "Tailwind", "Vercel"],
+      image: BuildYourBuzz,
+      live: "https://build-your-buzz.vercel.app/",
+      github: "https://github.com/Virenishere/build-your-buzz"
+    },
+    {
+      title: "Cloths4U",
+      category: "web",
+      description: "An online clothing store built with React and hosted on Netlify.",
+      tech: ["React", "Tailwind", "Netlify"],
+      image: Cloths4U,
+      live: "https://cloths4u.netlify.app/",
+      github: "https://cloths4u.netlify.app/"
     }
   ];
 
@@ -62,9 +77,10 @@ const Portfolio = () => {
     { key: "mobile", label: "Mobile Apps" }
   ];
 
-  const filteredProjects = filter === "all" 
-    ? projects 
-    : projects.filter(project => project.category === filter);
+  const filteredProjects =
+    filter === "all"
+      ? projects
+      : projects.filter((project) => project.category === filter);
 
   return (
     <section id="portfolio" className="py-20 px-6">
@@ -74,9 +90,10 @@ const Portfolio = () => {
             Our Portfolio
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Explore our latest projects and see how we've helped businesses transform their digital presence
+            Explore our latest projects and see how we've helped businesses
+            transform their digital presence
           </p>
-          
+
           {/* Filter buttons */}
           <div className="flex flex-wrap justify-center gap-4">
             {categories.map((category) => (
@@ -95,25 +112,32 @@ const Portfolio = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
-            <Card 
+            <Card
               key={`${project.title}-${filter}`}
               className="fusion-card hover-scale group overflow-hidden"
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
               <div className="relative overflow-hidden">
-                <img 
-                  src={project.image} 
+                <img
+                  src={project.image}
                   alt={project.title}
                   className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <Button variant="minimal-outline">
-                    View Project
-                  </Button>
+                <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex gap-4 items-center justify-center">
+                  {project.live && (
+                    <a href={project.live} target="_blank" rel="noreferrer">
+                      <Button variant="minimal-outline">Live</Button>
+                    </a>
+                  )}
+                  {project.github && (
+                    <a href={project.github} target="_blank" rel="noreferrer">
+                      <Button variant="minimal-outline">Code</Button>
+                    </a>
+                  )}
                 </div>
               </div>
-              
+
               <CardContent className="p-6">
                 <h3 className="text-xl font-semibold mb-3 text-gradient-teal">
                   {project.title}
@@ -121,10 +145,10 @@ const Portfolio = () => {
                 <p className="text-muted-foreground mb-4 leading-relaxed">
                   {project.description}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech, techIndex) => (
-                    <span 
+                    <span
                       key={techIndex}
                       className="px-3 py-1 bg-muted text-sm rounded-full border border-primary/20"
                     >
@@ -137,11 +161,11 @@ const Portfolio = () => {
           ))}
         </div>
 
-        <div className="text-center mt-16" data-aos="fade-up">
+        {/* <div className="text-center mt-16" data-aos="fade-up">
           <Button variant="minimal" size="lg">
             View All Projects
           </Button>
-        </div>
+        </div> */}
       </div>
     </section>
   );

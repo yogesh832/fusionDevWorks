@@ -25,7 +25,7 @@ const Hero = () => {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background">
       {/* 3D Earth Animation */}
-      <div className="absolute right-0 top-0 w-1/2 h-full opacity-20">
+      <div className="absolute right-0 top-0 w-full h-full opacity-20">
         <Scene3D />
       </div>
       
@@ -38,7 +38,7 @@ const Hero = () => {
         >
           <motion.h1 
             variants={fadeInUp}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
+            className="text-3xl  md:text-7xl lg:text-8xl font-bold tracking-tight"
           >
             <span className="text-foreground">Transforming Ideas</span>
             <br />
@@ -75,7 +75,7 @@ const Hero = () => {
         </motion.div>
 
         {/* Scroll indicator */}
-        <motion.div 
+        {/* <motion.div   
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 0.5 }}
@@ -88,7 +88,7 @@ const Hero = () => {
               className="w-1 h-3 bg-muted-foreground/50 rounded-full mt-2"
             />
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

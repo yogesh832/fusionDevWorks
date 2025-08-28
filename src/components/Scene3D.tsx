@@ -13,7 +13,7 @@ const Scene3D = () => {
         <Suspense fallback={null}>
           {/* Lighting */}
           <ambientLight intensity={0.5} />
-          <directionalLight position={[10, 10, 5]} intensity={1} />
+          <directionalLight position={[20, 10, 5]} intensity={1} />
           
           {/* Earth Globe */}
           <EarthGlobe />

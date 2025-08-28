@@ -1,29 +1,81 @@
-import { useRef } from 'react';
-import { useFrame } from '@react-three/fiber';
-import { useTexture, Sphere } from '@react-three/drei';
-import * as THREE from 'three';
+import { FC, useRef, useMemo } from "react";
+import { useLoader, useFrame } from "@react-three/fiber";
+import { TextureLoader, RepeatWrapping, Vector3 } from "three";
 
-const EarthGlobe = () => {
-  const meshRef = useRef<THREE.Mesh>(null);
-  
-  // Load earth texture (we'll use a simple gradient for now)
-  const earthTexture = useTexture('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iZWFydGgiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNGY5ZGY5IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjcwJSIgc3RvcC1jb2xvcj0iIzMwODBmZiIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMWQ0ZWQ4IiAvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiByPSIyNTYiIGZpbGw9InVybCgjZWFydGgpIiAvPgo8L3N2Zz4K');
+const EarthGlobe: FC = () => {
+  const globeRef = useRef<any>(null);
 
-  // Rotate the earth
-  useFrame((state, delta) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y += delta * 0.2;
+  // Create refs for orbiting dots
+  const dotRefs = useRef<any[]>([]);
+
+  const logoTexture = useLoader(
+    TextureLoader,
+    "https://fusiondevworks.com/lovable-uploads/78f498c2-7f04-4dac-853b-5c006f3941c4.png"
+  );
+
+  // Tile the logo texture
+  logoTexture.wrapS = RepeatWrapping;
+  logoTexture.wrapT = RepeatWrapping;
+  logoTexture.repeat.set(6, 3);
+
+  // Generate data for multiple orbiting dots
+  const dots = useMemo(() => {
+    const temp = [];
+    for (let i = 0; i < 30; i++) {
+      temp.push({
+        radius: 2 + Math.random() * 1.5,     // distance from globe center
+        speed: 0.2 + Math.random(),          // orbit speed
+        yOffset: -0.5 + Math.random(),       // vertical offset
+        phase: Math.random() * Math.PI * 2,  // initial angle
+      });
     }
+    return temp;
+  }, []);
+
+  useFrame(({ clock }) => {
+    // Rotate globe
+    if (globeRef.current) globeRef.current.rotation.y += 0.003;
+
+    // Animate dots
+    dotRefs.current.forEach((dot, i) => {
+      if (!dot) return;
+      const { radius, speed, yOffset, phase } = dots[i];
+      const t = clock.getElapsedTime() * speed + phase;
+      dot.position.set(
+        radius * Math.cos(t),
+        yOffset * Math.sin(t * 2), // slight vertical motion
+        radius * Math.sin(t)
+      );
+    });
   });
 
   return (
-    <Sphere ref={meshRef} args={[1, 64, 64]} scale={1.2}>
-      <meshStandardMaterial
-        map={earthTexture}
-        transparent
-        opacity={0.8}
-      />
-    </Sphere>
+    <>
+      {/* Globe */}
+      <mesh ref={globeRef}>
+        <sphereGeometry args={[1.5, 64, 64]} />
+        <meshStandardMaterial
+          map={logoTexture}
+          metalness={0.4}
+          roughness={0.4}
+        />
+      </mesh>
+
+      {/* Orbiting dots */}
+      {dots.map((_, i) => (
+        <mesh
+          key={i}
+          ref={(el) => (dotRefs.current[i] = el)}
+        >
+          <sphereGeometry args={[0.05, 16, 16]} />
+          <meshStandardMaterial
+            emissive="#ff6b6b"
+            emissiveIntensity={2}
+            color="#ff6b6b"
+          />
+        </mesh>
+      ))}
+    </>
   );
 };
 

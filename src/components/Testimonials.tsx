@@ -1,42 +1,42 @@
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/enhanced-button";
-
+import Jitendra from "../../public/lovable-uploads/jitendra.png"
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      role: "CEO, TechStart",
-      company: "TechStart Solutions",
+      name: "Jitendra Pratap Singh",
+      role: "Founder",
+      company: "EagleMedia360",
       content: "FusionDevWorks transformed our vision into a stunning web application. Their attention to detail and technical expertise exceeded our expectations.",
       rating: 5,
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://image2url.com/images/1756375786443-3f294715-a018-4916-a59b-d930a78ef168.png"
     },
     {
-      name: "Michael Chen",
-      role: "Product Manager",
-      company: "InnovateCorp",
+      name: "Narendra ",
+      role: "Director ",
+      company: "Salkatech",
       content: "The mobile app they developed for us has been a game-changer. User engagement increased by 200% within the first month of launch.",
       rating: 5,
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://tse1.mm.bing.net/th/id/OIP.tVnKK14bkmPn92WGmgUxQQAAAA?pid=Api&rs=1&c=1&qlt=95&w=82&h=123"
     },
     {
-      name: "Emily Rodriguez",
-      role: "Founder",
-      company: "GreenTech Startup",
+      name: "Rajnesh Thakur",
+      role: "Founder ",
+      company: "Elexico Digital",
       content: "Professional, responsive, and incredibly talented. They delivered our project on time and within budget. Highly recommended!",
       rating: 5,
-      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://tse1.mm.bing.net/th/id/OIP.7b7FFC2ANLuE-PH0Ged66wHaE8?pid=Api&rs=1&c=1&qlt=95&w=185&h=123"
     },
     {
-      name: "David Park",
+      name: "Kailash Shahi",
       role: "CTO",
-      company: "DataFlow Systems",
+      company: " Endiexpert",
       content: "Their expertise in modern web technologies is impressive. The dashboard they built for us handles millions of data points seamlessly.",
       rating: 5,
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://tse1.mm.bing.net/th/id/OIP.YIre5HGHiqBa7DCmrF4KwwHaJQ?pid=Api&P=0&h=180"
     }
   ];
 
@@ -147,11 +147,6 @@ const Testimonials = () => {
           </div>
         </div>
 
-        <div className="text-center mt-16" data-aos="fade-up">
-          <Button variant="minimal" size="lg">
-            Start Your Success Story
-          </Button>
-        </div>
       </div>
     </section>
   );
