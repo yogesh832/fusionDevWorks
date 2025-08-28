@@ -4,6 +4,7 @@ import { Button } from "./ui/enhanced-button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import axios from "axios";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,16 +13,39 @@ const Contact = () => {
     company: "",
     message: ""
   });
+  const [loading, setLoading] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you within 24 hours.",
-    });
-    setFormData({ name: "", email: "", company: "", message: "" });
+
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        title: "Error",
+        description: "Please fill in all required fields.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const res = await axios.post("http://localhost:8000/api/contact", formData);
+      toast({
+        title: "Message Sent!",
+        description: res.data.message || "We'll get back to you within 24 hours.",
+      });
+      setFormData({ name: "", email: "", company: "", message: "" });
+    } catch (err) {
+      toast({
+        title: "Error",
+        description: err.response?.data?.message || "Something went wrong.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -32,30 +56,10 @@ const Contact = () => {
   };
 
   const contactInfo = [
-    {
-      icon: "📧",
-      title: "Email",
-      details: "hello@fusiondevworks.com",
-      link: "mailto:hello@fusiondevworks.com"
-    },
-    {
-      icon: "📱",
-      title: "Phone",
-      details: "+1 (555) 123-4567",
-      link: "tel:+15551234567"
-    },
-    {
-      icon: "🌍",
-      title: "Location",
-      details: "San Francisco, CA",
-      link: "#"
-    },
-    {
-      icon: "💬",
-      title: "Response Time",
-      details: "Within 24 hours",
-      link: "#"
-    }
+    { icon: "📧", title: "Email", details: "worksfusiondev@gmail.com", link: "mailto:worksfusiondev@gmail.com" },
+    { icon: "📱", title: "Phone", details: "+91 9211753859,9259756979", link: "tel:+15551234567" },
+    { icon: "🌍", title: "Location", details: "Bageshwar, Uttrakhand, India", link: "#" },
+    { icon: "💬", title: "Response Time", details: "Within 24 hours", link: "#" },
   ];
 
   return (
@@ -82,9 +86,7 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium mb-2">
-                      Name *
-                    </label>
+                    <label className="block text-sm font-medium mb-2">Name *</label>
                     <Input
                       name="name"
                       value={formData.name}
@@ -95,9 +97,7 @@ const Contact = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">
-                      Company
-                    </label>
+                    <label className="block text-sm font-medium mb-2">Company</label>
                     <Input
                       name="company"
                       value={formData.company}
@@ -107,11 +107,9 @@ const Contact = () => {
                     />
                   </div>
                 </div>
-                
+
                 <div>
-                  <label className="block text-sm font-medium mb-2">
-                    Email *
-                  </label>
+                  <label className="block text-sm font-medium mb-2">Email *</label>
                   <Input
                     type="email"
                     name="email"
@@ -122,11 +120,9 @@ const Contact = () => {
                     placeholder="your@email.com"
                   />
                 </div>
-                
+
                 <div>
-                  <label className="block text-sm font-medium mb-2">
-                    Project Details *
-                  </label>
+                  <label className="block text-sm font-medium mb-2">Project Details *</label>
                   <Textarea
                     name="message"
                     value={formData.message}
@@ -137,14 +133,15 @@ const Contact = () => {
                     placeholder="Tell us about your project, timeline, and requirements..."
                   />
                 </div>
-                
+
                 <Button 
                   type="submit"
                   variant="minimal"
                   size="lg"
                   className="w-full"
+                  disabled={loading}
                 >
-                  Send Message
+                  {loading ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </CardContent>
@@ -153,9 +150,7 @@ const Contact = () => {
           {/* Contact Information */}
           <div className="space-y-8" data-aos="fade-left">
             <div className="fusion-card p-8">
-              <h3 className="text-2xl font-bold mb-6 text-gradient-teal">
-                Get In Touch
-              </h3>
+              <h3 className="text-2xl font-bold mb-6 text-gradient-teal">Get In Touch</h3>
               <p className="text-muted-foreground mb-8 leading-relaxed">
                 We're here to help bring your vision to life. Whether you need a new website, 
                 mobile app, or custom software solution, our team is ready to deliver 
@@ -181,9 +176,7 @@ const Contact = () => {
             </div>
 
             <div className="fusion-card p-8 text-center">
-              <h3 className="text-xl font-bold mb-4 text-gradient-primary">
-                Ready to Start?
-              </h3>
+              <h3 className="text-xl font-bold mb-4 text-gradient-primary">Ready to Start?</h3>
               <p className="text-muted-foreground mb-6">
                 Book a free consultation call to discuss your project
               </p>

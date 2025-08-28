@@ -66,8 +66,8 @@ const Footer = () => {
               Connect With Us
             </h3>
             <div className="space-y-2 mb-4">
-              <p className="text-muted-foreground">hello@fusiondevworks.com</p>
-              <p className="text-muted-foreground">+1 (555) 123-4567</p>
+              <p className="text-muted-foreground">worksfusiondev@gmail.com</p>
+              <p className="text-muted-foreground">+91 9211753859, +91 9259756979</p>
               <p className="text-muted-foreground">San Francisco, CA</p>
             </div>
             
