@@ -29,7 +29,7 @@ const Navigation = () => {
     >
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center space-x-3">
+        <a href="/"><div className="flex items-center space-x-3">
           <img
             src="/lovable-uploads/favicon.png"
             alt="FusionDevWorks Logo"
@@ -39,6 +39,7 @@ const Navigation = () => {
             FusionDevWorks
           </span>
         </div>
+        </a>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">

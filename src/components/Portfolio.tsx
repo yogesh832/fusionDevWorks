@@ -17,7 +17,7 @@ const Portfolio = () => {
   const projects = [
     {
       title: "Rocksbox",
-      category: "web",
+      category: "Ui/Ux",
       description: "A jewelry subscription website design inspired by Rocksbox.",
       tech: ["Next.js", "Tailwind", "Vercel"],
       image: Rocksbox,
@@ -74,7 +74,7 @@ const Portfolio = () => {
   const categories = [
     { key: "all", label: "All Projects" },
     { key: "web", label: "Web Apps" },
-    { key: "mobile", label: "Mobile Apps" }
+    { key: "mobile", label: "Ui/Ux" }
   ];
 
   const filteredProjects =
