@@ -31,10 +31,10 @@ router.post("/", async (req, res) => {
       subject: `📩 New Enquiry from ${name}`,
       html: `
   <div style="max-width: 600px; margin: auto; border: 1px solid #e0e0e0; border-radius: 10px; padding: 24px; font-family: Arial, sans-serif; background-color: #fff;">
-    <div style="text-align: center;">
-      <img src="http://localhost:8080/lovable-uploads/78f498c2-7f04-4dac-853b-5c006f3941c4.png" alt="Lohamandi Logo" style="width: 120px; margin-bottom: 12px;" />
+    <div style="text-align: center; background-color: black; color: white; padding: 12px; border-radius: 8px;">
+      <img src="https://fusiondevworks.com/lovable-uploads/78f498c2-7f04-4dac-853b-5c006f3941c4.png" alt="fusiondevworks Logo" style="width: 120px; margin-bottom: 12px;" />
       <h2 style="margin: 0; color: #D61349;">You’ve received a new enquiry!</h2>
-      <p style="color: #555; font-size: 14px; margin-top: 4px;">From Lohamandi.com contact form</p>
+      <p style="color: #555; font-size: 14px; margin-top: 4px;">From fusiondevworks contact form</p>
     </div>
 
     <hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;" />
@@ -60,7 +60,7 @@ router.post("/", async (req, res) => {
     <hr style="margin: 24px 0; border: none; border-top: 1px solid #eee;" />
 
     <footer style="font-size: 12px; text-align: center; color: #999;">
-      <p>This message was submitted from <a href="https://lohamandi.com" style="color: #D61349; text-decoration: none;">lohamandi.com</a></p>
+      <p>This message was submitted from <a href="https://fusiondevworks" style="color: #D61349; text-decoration: none;">lohamandi.com</a></p>
     </footer>
   </div>
 `,

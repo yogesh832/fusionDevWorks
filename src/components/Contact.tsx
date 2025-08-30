@@ -44,7 +44,7 @@ const Contact = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:8000/api/contact", formData);
+      const res = await axios.post("https://fusiondevworks.onrender.com/api/contact", formData);
       toast({
         title: "Message Sent!",
         description: res.data.message || "We'll get back to you within 24 hours.",
